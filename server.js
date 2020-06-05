@@ -190,8 +190,8 @@ app.put("/api/v1/clients/:id", (req, res) => {
   updateClients(updatedClients);
 
   // Return list of all clients
-  return res.status(200).send(db.prepare("select * from clients").all());
-  //return res.status(200).send(clients);
+  let clients = db.prepare("select * from clients").all();
+  return res.status(200).send(clients);
 });
 const clientUpdate = db.prepare(
   "UPDATE clients SET status=?, priority=? WHERE id=?"
